@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 > This is a application built woth MERN stack. 
@@ -26,3 +27,6 @@ npm run client
 
 
 
+=======
+# project-1
+>>>>>>> 12061ef66fca84f668838c966bdf449f04f9c7ec
