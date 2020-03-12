@@ -50,18 +50,20 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
+      <section className="section-book">
       <div className="register">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">
-                Create your DevConnector account
-              </p>
-              <form noValidate onSubmit={this.onSubmit}>
-                <TextFieldGroup
+        <div className="signup">
+          
+            <div className="u-margin-bottom-medium">
+              <h1 className="heading-secondary">Sign Up</h1>
+            </div>
+              
+              <form noValidate onSubmit={this.onSubmit} className = "form">
+                
+                 <TextFieldGroup
                   placeholder="Name"
                   name="name"
+                  className ="form__input"
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
@@ -69,15 +71,15 @@ class Register extends Component {
                 <TextFieldGroup
                   placeholder="Email"
                   name="email"
-                  type="email"
+                  type="email"                
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
+
                 />
                 <TextFieldGroup
                   placeholder="Password"
-                  name="password"
+                  name="password"                  
                   type="password"
                   value={this.state.password}
                   onChange={this.onChange}
@@ -92,11 +94,13 @@ class Register extends Component {
                   error={errors.password2}
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
+                
               </form>
-            </div>
-          </div>
+           
+          
         </div>
       </div>
+    </section>
     );
   }
 }

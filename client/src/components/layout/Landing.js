@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import Logo from '../../img/landing.jpg';
+import Footer from './Footer';
+//import Navbar from './Navbar';
+import Logo from '../../img/logowhite.png';
 import Image1 from '../../img/image1.png';
 import Image2 from '../../img/image2.png';
 import Image3 from '../../img/image3.png';
@@ -18,13 +20,52 @@ class Landing extends Component {
   render() {
     return (
       <React.Fragment>
+          
+          <div className="navigation">
+            <input type="checkbox" className="navigation__checkbox" id="navi-toggle" />
+
+            <label for="navi-toggle" className="navigation__button">
+                <span className="navigation__icon">&nbsp;</span>
+            </label>
+
+            <div className="navigation__background">&nbsp;</div>
+
+            <nav className="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><Link to="#" className="navigation__link">About Us</Link></li>
+                    <li class="navigation__item"><Link to="#" className="navigation__link">FAQ</Link></li>
+                    <li class="navigation__item"><Link to="#" className="navigation__link">Learn more</Link></li>
+                    <li class="navigation__item"><Link to="#" className="navigation__link">Login</Link></li>
+                    <li class="navigation__item"><Link to="#" className="navigation__link">Register</Link></li>
+                    </ul>
+            </nav>
+        </div>
       <header className="header">
                 
-                <p className="lead">
+                {/* <p className="lead">
                   {' '}
                   
-                </p>
+                </p> */}
                 <div className = "header__text-box">
+                <div className ="nav-bar">
+                    
+                    <div className = "logo-box">
+                        <img src ={Logo} className = "logo" alt = "logo"/>
+                    </div>
+                        <ul className="nav-list">
+                            <li className="nav-items">
+                            <Link className="nav-links" to="/register">
+                                Sign Up
+                            </Link>
+                            </li>
+                            <li className="nav-items">
+                            <Link className="nav-links" to="/login">
+                                Login
+                            </Link>
+                            </li>
+                         </ul>
+                    </div>
+                
                   <h1 className = "heading-primary">
                     <span className = "heading-primary--main">DONATE BLOOD</span>
                     <span className = "heading-primary--sub">SEARCH FOR BLOOD</span>
@@ -33,14 +74,15 @@ class Landing extends Component {
                   <Link to= "/register" className = "btn btn--white btn--animated">Sign up</Link>
                 </div>
        </header>         
-          
+      
+       
                  {/* <Link to="/register" className="btn btn-lg btn-info mr-2">
                   Sign Up
                 </Link>
                 <Link to="/login" className="btn btn-lg btn-light">
                   Login
-                </Link>  */}
-              
+                </Link>  
+               */}
 
         <main>
           <section className = "section-about">
@@ -225,9 +267,10 @@ class Landing extends Component {
                 </div>
 
             </section>
-
+            <Footer /> 
 
         </main>
+        
       </React.Fragment>
     );
   }

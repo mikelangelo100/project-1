@@ -10,8 +10,8 @@ import store from './store';
 
 import PrivateRoute from './components/common/PrivateRoute';
 
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+//import Navbar from './components/layout/Navbar';
+
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -32,6 +32,7 @@ import './sass/main.scss'
 //import icons styles
 import './styles/fonts/linea-basic-10.ttf';
 import './styles/styles.css'
+
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -59,7 +60,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+          
             <Route exact path="/" component={Landing} />
             <div className="container">
               <Route exact path="/register" component={Register} />
@@ -105,7 +106,7 @@ class App extends Component {
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
             </div>
-            <Footer />
+            
           </div>
         </Router>
       </Provider>
