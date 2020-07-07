@@ -1,6 +1,6 @@
 .card {
 
-    // FUNCTIONALITY
+    
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
@@ -62,17 +62,17 @@
         
         &--1 {
             background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), 
-            url(../../img/individual.jpg);
+            url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQvNb1ic_BA8PKa04lNHrlqvQZfWRDx1SlbKZ46lwAzVMCQJh25&usqp=CAU");
         }
 
         &--2 {
             background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), 
-            url(../../img/hospital.jpg);
+            url("https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.brookings.edu%2Fwp-content%2Fuploads%2F2017%2F05%2Fhospital002.jpg&imgrefurl=https%3A%2F%2Fwww.brookings.edu%2Fopinions%2Fits-time-to-disrupt-the-existing-hospital-business-model%2F&tbnid=TQE6FeL99TJh2M&vet=12ahUKEwjw_83Du6bpAhUGihoKHU_6C8QQMygOegUIARCwAg..i&docid=exVu4prwsnk8fM&w=5184&h=3456&q=hospital&ved=2ahUKEwjw_83Du6bpAhUGihoKHU_6C8QQMygOegUIARCwAg");
         }
 
         &--3 {
             background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), 
-            url(../../img/bloodbank.jpg);
+            url("https://cdn.britannica.com/09/147309-050-70516926/Blood-bank-employee-blood.jpg");
         }
     }
 
@@ -212,3 +212,4 @@
     }
 
 } 
+

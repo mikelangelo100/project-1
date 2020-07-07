@@ -4,37 +4,50 @@ const Schema = mongoose.Schema;
 // Create Schema
 const ProfileSchema = new Schema({
   user: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
-  handle: {
+  fullname: {
     type: String,
     required: true,
     max: 40
   },
-  company: {
-    type: String
+  gender: {
+    type: [String],
+    required: true
   },
-  website: {
-    type: String
-  },
-  location: {
-    type: String
-  },
-  status: {
+  age:{
     type: String,
     required: true
   },
-  skills: {
+  phonenumber:{
+    type: String,
+    required : true
+  },
+  bloodGroup: {
     type: [String],
+    required: true
+  },
+  city: {
+    type: String
+  },
+  contact: {
+    type: String,
     required: true
   },
   bio: {
     type: String
   },
-  githubusername: {
+  profileImg: {
     type: String
   },
+  accountType : [
+    {
+    selectAccount: {
+      type: String,
+      required: true
+    }}
+  ],
   experience: [
     {
       title: {
@@ -64,36 +77,12 @@ const ProfileSchema = new Schema({
       }
     }
   ],
-  education: [
+  account: [
     {
-      school: {
-        type: String,
-        required: true
-      },
-      degree: {
-        type: String,
-        required: true
-      },
-      fieldofstudy: {
-        type: String,
-        required: true
-      },
-      from: {
-        type: Date,
-        required: true
-      },
-      to: {
-        type: Date
-      },
-      current: {
-        type: Boolean,
-        default: false
-      },
-      description: {
-        type: String
-      }
+      type: [String]
     }
   ],
+
   social: {
     youtube: {
       type: String

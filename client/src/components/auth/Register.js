@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { registerUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
+import Avatar from '../../sass/img/avatar-form.png';
+import '../../css/dashboard/main.min.css';
+
 
 class Register extends Component {
   constructor() {
@@ -36,7 +40,7 @@ class Register extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const newUser = {
+    const newUser = { 
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
@@ -50,26 +54,28 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <section className="section-book">
-      <div className="register">
-        <div className="signup">
+      <section className="">
+      <div className="login-container">
+        <div className="login-box">
+        <img src = {Avatar} alt='form-image' className = "avatar-form" />
           
             <div className="u-margin-bottom-medium">
-              <h1 className="heading-secondary">Sign Up</h1>
+              <h1 className="reg">Sign Up</h1>
             </div>
               
               <form noValidate onSubmit={this.onSubmit} className = "form">
-                
+                <div className = "reg-control">
                  <TextFieldGroup
-                  placeholder="Name"
+                  placeholder="Full Name"
                   name="name"
-                  className ="form__input"
+                  type="name"
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
                 />
+                <label for = "fullname" className = "form__label">Enter Full name</label>
                 <TextFieldGroup
-                  placeholder="Email"
+                  placeholder="Email Address"
                   name="email"
                   type="email"                
                   value={this.state.email}
@@ -77,6 +83,7 @@ class Register extends Component {
                   error={errors.email}
 
                 />
+                <label for = "email" className = "form__label">Enter Email Address</label>
                 <TextFieldGroup
                   placeholder="Password"
                   name="password"                  
@@ -85,6 +92,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
+                <label for = "password" className = "form__label">Enter your password</label>
                 <TextFieldGroup
                   placeholder="Confirm Password"
                   name="password2"
@@ -93,8 +101,9 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password2}
                 />
+                <label for = "password2" className = "form__label">Confirm your password</label>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
-                
+              </div>
               </form>
            
           

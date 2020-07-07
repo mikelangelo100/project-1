@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
-import '../../img/login-page.jpg';
-import Avatar from '../../img/avatar-form.png';
+
+import Avatar from '../../sass/img/avatar-form.png';
+import { Link } from 'react-router-dom';
+import '../../css/pages/login.min.css';
+
 
 class Login extends Component {
   constructor() {
@@ -55,10 +58,11 @@ class Login extends Component {
         <div className="">
           <div className="">
             <div className="login-box">
-              <h1 className="">Log In</h1>
+              <h1 className="login-text">Log In</h1>
               <img src = {Avatar} alt='form-image' className = "avatar-form" />
               
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.onSubmit} className = "form">
+             
                 <TextFieldGroup
                   placeholder="Email Address"
                   name="email"
@@ -66,7 +70,9 @@ class Login extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
+                  className = "form__input"
                 />
+                <label for = "email" className = "form__label">Email Address</label>
 
                 <TextFieldGroup
                   placeholder="Password"
@@ -75,9 +81,23 @@ class Login extends Component {
                   value={this.state.password}
                   onChange={this.onChange}
                   error={errors.password}
+                  className = "form__input"
                 />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <label for ="password" className = "form__label">Password</label>
+                <input type="submit" className="submit" />
+                
+               
+                
               </form>
+              <div>
+                <ul className = "extra-lists">
+                  <li className = "extra-items"><Link to ="/register" className = "extra-things">Create an account</Link></li>
+                  <li className = "extra-items"><Link to ="#" className = "extra-things">Forget password?</Link></li>
+                </ul>
+              
+                
+              </div>
+              
             </div>
           </div>
         </div>

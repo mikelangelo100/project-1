@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+
 const TextFieldGroup = ({
   name,
   placeholder,
@@ -14,10 +15,11 @@ const TextFieldGroup = ({
   disabled
 }) => {
   return (
-    <div className="form-group">
+    <div className="form-row">
+      <div className="form-group col-md-6">
       <input
         type={type}
-        className={classnames('form-control form-control-lg', {
+        className={classnames('form-control form__input', {
           'is-invalid': error
         })}
         placeholder={placeholder}
@@ -26,8 +28,9 @@ const TextFieldGroup = ({
         onChange={onChange}
         disabled={disabled}
       />
-      {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className="invalid-feedback">{error}</div>}
+      {info && <small className="form-info">{info}</small>}
+      {error && <div >{error}</div>}
+    </div>
     </div>
   );
 };

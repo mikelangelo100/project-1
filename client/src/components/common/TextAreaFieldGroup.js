@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+
 const TextAreaFieldGroup = ({
   name,
   placeholder,
@@ -13,16 +14,16 @@ const TextAreaFieldGroup = ({
   return (
     <div className="form-group">
       <textarea
-        className={classnames('form__input form-control-lg', {
-          'is-invalid': error
+        className={classnames('form-control form__input', {
+          'error-feedback': error
         })}
         placeholder={placeholder}
         name={name}
         value={value}
         onChange={onChange}
       />
-      {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className="invalid-feedback">{error}</div>}
+      {info && <small className="form-info">{info}</small>}
+      {error && <div className="error-feedback">{error}</div>}
     </div>
   );
 };

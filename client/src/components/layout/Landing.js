@@ -4,11 +4,11 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import Footer from './Footer';
 //import Navbar from './Navbar';
-import Logo from '../../img/logowhite.png';
-import Image1 from '../../img/image1.png';
-import Image2 from '../../img/image2.png';
-import Image3 from '../../img/image3.png';
-import '../../sass/main.scss'
+import Logo from '../../sass/img/logowhite.png';
+import Image1 from '../../sass/img/image1.png';
+import Image2 from '../../sass/img/image2.png';
+import Image3 from '../../sass/img/image3.png';
+
 
 class Landing extends Component {
   componentDidMount() {
@@ -24,19 +24,19 @@ class Landing extends Component {
           <div className="navigation">
             <input type="checkbox" className="navigation__checkbox" id="navi-toggle" />
 
-            <label for="navi-toggle" className="navigation__button">
+            <label htmlFor="navi-toggle" className="navigation__button">
                 <span className="navigation__icon">&nbsp;</span>
             </label>
 
             <div className="navigation__background">&nbsp;</div>
 
             <nav className="navigation__nav">
-                <ul class="navigation__list">
-                    <li class="navigation__item"><Link to="#" className="navigation__link">About Us</Link></li>
-                    <li class="navigation__item"><Link to="#" className="navigation__link">FAQ</Link></li>
-                    <li class="navigation__item"><Link to="#" className="navigation__link">Learn more</Link></li>
-                    <li class="navigation__item"><Link to="#" className="navigation__link">Login</Link></li>
-                    <li class="navigation__item"><Link to="#" className="navigation__link">Register</Link></li>
+                <ul className="navigation__list">
+                    <li className="navigation__item"><Link to="#" className="navigation__link">About Us</Link></li>
+                    <li className="navigation__item"><Link to="#" className="navigation__link">FAQ</Link></li>
+                    <li className="navigation__item"><Link to="#" className="navigation__link">Learn more</Link></li>
+                    <li className="navigation__item"><Link to="#" className="navigation__link">Login</Link></li>
+                    <li className="navigation__item"><Link to="#" className="navigation__link">Register</Link></li>
                     </ul>
             </nav>
         </div>
@@ -91,46 +91,46 @@ class Landing extends Component {
               our business is saving lifes
             </h2>
           </div>
-          <div class="row">
-             <div class="col-1-of-2">
-                        <h3 class="heading-tertiary-1 u-margin-bottom-small">You can donate blood anywhere and at anytime</h3>
-                        <p class="paragraph">
+          <div className="row">
+             <div className="col-1-of-2">
+                        <h3 className="heading-tertiary-1 u-margin-bottom-small">You can donate blood anywhere and at anytime</h3>
+                        <p className="paragraph">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ipsum sapiente aspernatur libero repellat quis consequatur
                             ducimus quam nisi exercitationem omnis earum qui. We believe that 
                             no African should die from a shortage of essential medical products at the Hospital level, and we are on a mission to solve it. Our goal is to deliver needed medical products such as blood, blood products, oxygen, as well as vaccines to hospitals
                             across Africa. We are on a mission to save one million lives.
                         </p>
 
-                        <h3 class="heading-tertiary-2 u-margin-bottom-small">You can search for any blood group</h3>
-                        <p class="paragraph">
+                        <h3 className="heading-tertiary-2 u-margin-bottom-small">You can search for any blood group</h3>
+                        <p className="paragraph">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nulla deserunt voluptatum nam.
                             no African should die from a shortage of essential medical products at the Hospital level, and we are on a mission to solve it. Our goal is 
                             to deliver needed medical products such as blood, blood products, oxygen, as well as vaccines to hospitals
                             across Africa. We are on a mission to save one million lives.
                         </p>
                       
-                        <Link to ="" class="btn-text">Learn more &rarr;</Link>
+                        <Link to ="" className="btn-text">Learn more &rarr;</Link>
                       </div>
-                      <div class="col-1-of-2">
-                        <div class="composition">
+                      <div className="col-1-of-2">
+                        <div className="composition">
 
                             <img src={Image1} 
                                  sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                  alt="Photo 1"
-                                 class="composition__photo composition__photo--p1"
+                                 className="composition__photo composition__photo--p1"
                                   />
 
                             <img 
                            
                                  sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                  alt="Photo 2"
-                                 class="composition__photo composition__photo--p2"
+                                 className="composition__photo composition__photo--p2"
                                  src={Image2}/>
 
                             <img
                                  sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                  alt="Photo 3"
-                                 class="composition__photo composition__photo--p3"
+                                 className="composition__photo composition__photo--p3"
                                  src= {Image3} />
 
                            
@@ -146,7 +146,7 @@ class Landing extends Component {
                     <div className="col-1-of-3">
                         <div className="feature-box">
                             <i className="feature-box__icon icon-basic-geolocalize-05"></i>
-                            <h3 classNaem="heading-tertiary u-margin-bottom-small">Locate</h3>
+                            <h3 className="heading-tertiary u-margin-bottom-small">Locate</h3>
                             <p className="feature-box__text">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ipsum sapiente aspernatur.
                             </p>

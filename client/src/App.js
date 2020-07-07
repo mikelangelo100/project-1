@@ -5,6 +5,7 @@ import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 import { clearCurrentProfile } from './actions/profileActions';
 
+
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -17,21 +18,24 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/create-profile/CreateProfile';
+import NewFileUpload from './components/create-profile/profileImg';
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-credentials/AddExperience';
-import AddEducation from './components/add-credentials/AddEducation';
+//import AddEducation from './components/add-credentials/AddEducation';
+import Search from './components/dashboard/Search/Search';
+
 import Profiles from './components/profiles/Profiles';
-import Profile from './components/profile/Profile';
+//import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import NotFound from './components/not-found/NotFound';
+import Profile from './components/profile/Profile'
 
-//import './App.css';
-import './sass/main.scss'
+import './css/main.min.css';
 
 //import icons styles
 import './styles/fonts/linea-basic-10.ttf';
-import './styles/styles.css'
+import './styles/styles.css';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -57,7 +61,9 @@ if (localStorage.jwtToken) {
 class App extends Component {
   render() {
     return (
+     
       <Provider store={store}>
+        
         <Router>
           <div className="App">
           
@@ -66,7 +72,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
-              <Route exact path="/profile/:handle" component={Profile} />
+              <Route exact path="/profile/:name" component={Profile} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -76,6 +82,13 @@ class App extends Component {
                   path="/create-profile"
                   component={CreateProfile}
                 />
+              </Switch>
+              <Switch>
+                <PrivateRoute 
+                 exact
+                 path = "/file-upload"
+                 component={NewFileUpload}
+              />
               </Switch>
               <Switch>
                 <PrivateRoute
@@ -94,10 +107,11 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/add-education"
-                  component={AddEducation}
+                  path="/search"
+                  component={Search}
                 />
               </Switch>
+             
               <Switch>
                 <PrivateRoute exact path="/feed" component={Posts} />
               </Switch>

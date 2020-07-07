@@ -4,28 +4,25 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-import InputGroup from '../common/InputGroup';
+//import InputGroup from '../common/InputGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import { createProfile } from '../../actions/profileActions';
+
+
+import '../../sass/dashboard/main.scss';
 
 class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displaySocialInputs: false,
-      handle: '',
-      company: '',
-      website: '',
-      location: '',
-      status: '',
-      skills: '',
-      githubusername: '',
+      name: '',
+      gender: '',
+      age: '',
+      phonenumber: '', 
+      bloodGroup: '',
+      city: '',
+      contact:'',
       bio: '',
-      twitter: '',
-      facebook: '',
-      linkedin: '',
-      youtube: '',
-      instagram: '',
       errors: {}
     };
 
@@ -43,19 +40,14 @@ class CreateProfile extends Component {
     e.preventDefault();
 
     const profileData = {
-      handle: this.state.handle,
-      company: this.state.company,
-      website: this.state.website,
-      location: this.state.location,
-      status: this.state.status,
-      skills: this.state.skills,
-      githubusername: this.state.githubusername,
-      bio: this.state.bio,
-      twitter: this.state.twitter,
-      facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
-      youtube: this.state.youtube,
-      instagram: this.state.instagram
+      name: this.state.name,
+      age: this.state.age,
+      gender: this.state.gender,
+      city: this.state.city,
+      bloodGroup: this.state.bloodGroup,
+      phonenumber: this.state.phonenumber,
+      contact: this.state.contact,
+      bio: this.state.bio
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -66,143 +58,136 @@ class CreateProfile extends Component {
   }
 
   render() {
-    const { errors, displaySocialInputs } = this.state;
-
-    let socialInputs;
-
-    if (displaySocialInputs) {
-      socialInputs = (
-        <div>
-          <InputGroup
-            placeholder="Twitter Profile URL"
-            name="twitter"
-            icon="fab fa-twitter"
-            value={this.state.twitter}
-            onChange={this.onChange}
-            error={errors.twitter}
-          />
-
-          <InputGroup
-            placeholder="Facebook Page URL"
-            name="facebook"
-            icon="fab fa-facebook"
-            value={this.state.facebook}
-            onChange={this.onChange}
-            error={errors.facebook}
-          />
-
-          <InputGroup
-            placeholder="Linkedin Profile URL"
-            name="linkedin"
-            icon="fab fa-linkedin"
-            value={this.state.linkedin}
-            onChange={this.onChange}
-            error={errors.linkedin}
-          />
-
-          <InputGroup
-            placeholder="YouTube Channel URL"
-            name="youtube"
-            icon="fab fa-youtube"
-            value={this.state.youtube}
-            onChange={this.onChange}
-            error={errors.youtube}
-          />
-
-          <InputGroup
-            placeholder="Instagram Page URL"
-            name="instagram"
-            icon="fab fa-instagram"
-            value={this.state.instagram}
-            onChange={this.onChange}
-            error={errors.instagram}
-          />
-        </div>
-      );
-    }
+    const { errors } = this.state;
 
     // Select options for status
     const options = [
-      { label: '* Select Professional Status', value: 0 },
-      { label: 'Developer', value: 'Developer' },
-      { label: 'Junior Developer', value: 'Junior Developer' },
-      { label: 'Senior Developer', value: 'Senior Developer' },
-      { label: 'Manager', value: 'Manager' },
-      { label: 'Student or Learning', value: 'Student or Learning' },
-      { label: 'Instructor or Teacher', value: 'Instructor or Teacher' },
-      { label: 'Intern', value: 'Intern' },
-      { label: 'Other', value: 'Other' }
+      { label: '* Select Blood group', value: 0 },
+      { label: 'A+', value: 'A+' },
+      { label: 'A-', value: 'A-' },
+      { label: 'B+', value: 'B+' },
+      { label: 'AB+', value: 'AB+' },
+      { label: 'AB-', value: 'AB-' },
+      { label: 'O+', value: 'O+' },
+      { label: 'O-', value: 'O-' },
+      { label: 'Not sure', value: 'Not sure' }
+    ];
+    const gender = [
+      {label: '* Gender', value: 0},
+      {label: 'Male', value : 'Male'},
+      {label : 'Female', value : 'Female'}
     ];
 
     return (
-      <div className="create-profile">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create Your Profile</h1>
-              <p className="lead text-center">
-                Let's get some information to make your profile stand out
+      <div className = "create-profile__body">        
+       <div className="container-wrapper">
+          <div className="header-content">
+              <h1 className="header-content__profile">Create Your Profile</h1>
+              <p className="header-content__text">
+                Let's get some information to about you to build your profile
               </p>
-              <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.onSubmit}>
+          </div>
+          <div className= "">
+              <small className="required">* = required fields</small>
+              <form onSubmit={this.onSubmit} encType = "multipart/form-data" className = "form-content">
+             
+                <div className = "form-content__fullname">
                 <TextFieldGroup
-                  placeholder="* Profile Handle"
-                  name="handle"
+                  placeholder="* Full name"
+                  name="name"
                   value={this.state.handle}
                   onChange={this.onChange}
                   error={errors.handle}
-                  info="A unique handle for your profile URL. Your full name, company name, nickname"
+                  info="A unique profile name for your profile."
+                  
                 />
+                </div> 
+                <div className = "form-content__gender">
+                {/* <TextFieldGroup
+                  placeholder="Gender"
+                  name="gender"
+                  value={this.state.gender}
+                  onChange={this.onChange}
+                  error={errors.gender}
+                  info="Male or Female"
+                  
+                /> */}
+                
                 <SelectListGroup
-                  placeholder="Status"
-                  name="status"
+                  placeholder="Gender"
+                  name="gender"
                   value={this.state.status}
                   onChange={this.onChange}
-                  options={options}
+                  options={gender}
                   error={errors.status}
-                  info="Give us an idea of where you are at in your career"
+                  info="Please select Gender"
+                  
                 />
+                </div>
+                <div className = "form-content__age">
                 <TextFieldGroup
-                  placeholder="Company"
-                  name="company"
-                  value={this.state.company}
+                  placeholder="Age"
+                  name="age"
+                  value={this.state.age}
                   onChange={this.onChange}
-                  error={errors.company}
-                  info="Could be your own company or one you work for"
+                  error={errors.age}
+                  info="Age"
+                  
                 />
+              </div>
+              <div   className = "form-content__phone">
                 <TextFieldGroup
-                  placeholder="Website"
-                  name="website"
-                  value={this.state.website}
+                  placeholder="Phone Number"
+                  name="phonenumber"
+                  value={this.state.phonenumber}
                   onChange={this.onChange}
-                  error={errors.website}
-                  info="Could be your own website or a company one"
+                  error={errors.phonenumber}
+                  info="Enter your Phone number"
+                
                 />
+                </div>
+                
+                <div className = "form-content__bloodgroup">
+                <SelectListGroup
+                  placeholder="Blood group"
+                  name="bloodGroup"
+                  value={this.state.bloodGroup}
+                  onChange={this.onChange}
+                  options={options}
+                  error={errors.bloodGroup}
+                  info="Please select your Blood group"
+                  
+                />
+                </div>
+              
+                
+                <div  className = "form-content__state">
                 <TextFieldGroup
-                  placeholder="Location"
-                  name="location"
-                  value={this.state.location}
+                  placeholder="State"
+                  name="city"
+                  value={this.state.city}
                   onChange={this.onChange}
-                  error={errors.location}
-                  info="City or city & state suggested (eg. Boston, MA)"
+                  error={errors.city}
+                  info="City or city & state suggested (eg. Lagos, Nigeria)"
+                 
                 />
+                </div>
+                
+               
+                <div className = "form-content__contact">
                 <TextFieldGroup
-                  placeholder="* Skills"
-                  name="skills"
-                  value={this.state.skills}
+                  placeholder="Contact Address"
+                  name="contact"
+                  value={this.state.contact}
                   onChange={this.onChange}
-                  error={errors.skills}
-                  info="Please use comma separated values (eg.
-                    HTML,CSS,JavaScript,PHP"
+                  error={errors.contact}
+                  info="Your contact address"
+                
                 />
-                <TextFieldGroup
-                  placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.onChange}
-                  error={errors.githubusername}
-                  info="If you want your latest repos and a Github link, include your username"
-                />
+                
+                </div>
+               
+                <div className ="form-content__bio">
                 <TextAreaFieldGroup
                   placeholder="Short Bio"
                   name="bio"
@@ -210,33 +195,24 @@ class CreateProfile extends Component {
                   onChange={this.onChange}
                   error={errors.bio}
                   info="Tell us a little about yourself"
+                  
                 />
-
-                <div className="mb-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      this.setState(prevState => ({
-                        displaySocialInputs: !prevState.displaySocialInputs
-                      }));
-                    }}
-                    className="btn btn-light"
-                  >
-                    Add Social Network Links
-                  </button>
-                  <span className="text-muted">Optional</span>
+                
                 </div>
-                {socialInputs}
+                
                 <input
                   type="submit"
                   value="Submit"
                   className="btn btn-info btn-block mt-4"
                 />
+
               </form>
             </div>
-          </div>
-        </div>
-      </div>
+            </div>
+          
+        
+            </div>
+
     );
   }
 }

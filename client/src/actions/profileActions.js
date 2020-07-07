@@ -6,7 +6,9 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  GET_PROFILE_IMAGE, 
+  SELECT_ACCOUNT
 } from './types';
 
 // Get current profile
@@ -29,10 +31,10 @@ export const getCurrentProfile = () => dispatch => {
 };
 
 // Get profile by handle
-export const getProfileByHandle = handle => dispatch => {
+export const getProfileByName = name => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`/api/profile/handle/${handle}`)
+    .get(`/api/profile/name/${name}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -58,6 +60,29 @@ export const createProfile = (profileData, history) => dispatch => {
         payload: err.response.data
       })
     );
+};
+export const profileImg = (profilePicture, history) => dispatch => {
+  axios 
+    .post('/services/fileupload', profilePicture)
+    .then(res => history.push('/dashboard'))
+    .catch(err => 
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      }))
+};
+
+// Select Account
+export const selectAccount = (selectedAccount, history) => dispatch => {
+  axios
+  .post('/api/selectAccount', selectedAccount)
+  .then(res => history.push('/dashboard'))
+  .catch(
+    err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    })
+  )
 };
 
 // Add experience

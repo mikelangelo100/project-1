@@ -2,7 +2,9 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  GET_PROFILE_IMAGE, 
+  SELECT_ACCOUNT
 } from '../actions/types';
 
 const initialState = {
@@ -35,6 +37,17 @@ export default function(state = initialState, action) {
         ...state,
         profile: null
       };
+    case GET_PROFILE_IMAGE:
+      return {
+        ...state,
+        profile: action.payload,
+        loading: false
+      }
+      case SELECT_ACCOUNT:
+        return {
+          ...state, profile: action.payload,
+          loading: false
+        }
     default:
       return state;
   }

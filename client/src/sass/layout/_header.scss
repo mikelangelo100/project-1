@@ -1,6 +1,4 @@
-body{
-    padding-top: 1rem;
-}
+
 .header {
     height: 85vh;
     background-image: linear-gradient(
@@ -26,7 +24,7 @@ body{
             to right bottom,
             rgba($color-primary-light, 0.8),
             rgba($color-primary-dark, 0.8)),
-        url(../../img/landing.jpg);
+        url("https://readydonor.s3.us-east-2.amazonaws.com/landing.jpg");
     }
 
     @include respond(phone) {
