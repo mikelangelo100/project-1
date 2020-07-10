@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const {bloodGroupSchema} = require('./bloodGroup');
 
 // Create Schema
 const ProfileSchema = new Schema({
@@ -7,7 +8,7 @@ const ProfileSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
-  fullname: {
+  name: {
     type: String,
     required: true,
     max: 40
@@ -25,10 +26,13 @@ const ProfileSchema = new Schema({
     required : true
   },
   bloodGroup: {
-    type: [String],
+    type: bloodGroupSchema,
     required: true
   },
   city: {
+    type: String
+  },
+  avatar: {
     type: String
   },
   contact: {

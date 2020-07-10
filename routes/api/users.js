@@ -12,6 +12,7 @@ const validateLoginInput = require('../../validation/login');
 
 // Load User model
 const User = require('../../models/User');
+const Hospital = require('../../models/User');
 
 // @route   GET api/users/test
 // @desc    Tests users route
@@ -123,5 +124,96 @@ router.get(
     });
   }
 );
+////////////////////////HOSPITAL ROUTE ////
+router.post('/register/hospital', (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  Hospital.findOne({ hospitalEmail: req.body.hospitalEmail }).then(user => {
+    if (user) {
+      errors.email = 'Email already exists';
+      return res.status(400).json(errors);
+    } else {
+      const avatar = gravatar.url(req.body.email, {
+        s: '200', // Size
+        r: 'pg', // Rating
+        d: 'mm' // Default
+      });
+
+      const newUser = new User({
+        name: req.body.name,
+        hospitalEmail: req.body.hospitalEmail,
+        hospitalNumber: req.body.hospitalNumber,
+        avatar,
+        password: req.body.password
+      });
+
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+        });
+      });
+    }
+  });
+});
+
+
+
+// @route   GET api/users/login/hospital
+// @desc    Login User / Returning JWT Token
+// @access  Public
+router.post('/login/hospital', (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const hospitalNumber = req.body.hospitalNumber
+  const password = req.body.password;
+
+  // Find user by email
+  Hospital.findOne({ hospitalNumber }).then(user => {
+    // Check for user
+    if (!user) {
+      errors.hospitalNumber = 'User not found';
+      return res.status(404).json(errors);
+    }
+
+    // Check Password
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        // User Matched
+        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
+
+        // Sign Token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 100000 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: 'Bearer ' + token
+            });
+          }
+        );
+      } else {
+        errors.password = 'Password incorrect';
+        return res.status(400).json(errors);
+      }
+    });
+  });
+});
 
 module.exports = router;

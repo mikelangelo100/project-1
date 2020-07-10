@@ -14,6 +14,8 @@ const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const fileRoutes = require('./routes/api/fileUpload');
 const donation = require('./routes/api/donation');
+const bloodGroup = require('./routes/api/bloodgroup');
+const username = require('./routes/api/profile')
 
 
 app.use((req, res, next) =>{
@@ -73,7 +75,9 @@ app.use('/api/users', users);
 app.use('/api/document', fileRoutes);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
-app.use('/api/donation', donation)
+app.use('/api/donation', donation);
+app.use('/api/bloodGroup', bloodGroup);
+app.use('/api/profile/username', username)
 
 //app.use('/api/profile/image-upload', fileRoutes)
 

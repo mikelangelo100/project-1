@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import Footer from './Footer';
+import FAQs from './Faq'
 //import Navbar from './Navbar';
 import Logo from '../../sass/img/logowhite.png';
 import Image1 from '../../sass/img/image1.png';
@@ -33,7 +34,7 @@ class Landing extends Component {
             <nav className="navigation__nav">
                 <ul className="navigation__list">
                     <li className="navigation__item"><Link to="#" className="navigation__link">About Us</Link></li>
-                    <li className="navigation__item"><Link to="#" className="navigation__link">FAQ</Link></li>
+                    <li className="navigation__item"><Link to="/faqs" component={FAQs} className="navigation__link">FAQ</Link></li>
                     <li className="navigation__item"><Link to="#" className="navigation__link">Learn more</Link></li>
                     <li className="navigation__item"><Link to="#" className="navigation__link">Login</Link></li>
                     <li className="navigation__item"><Link to="#" className="navigation__link">Register</Link></li>
@@ -230,7 +231,7 @@ class Landing extends Component {
                             <div className="card__side card__side--back card__side--back-2">
                                 <div className="card__cta">
 
-                                    <Link to = "" className="btn btn--white">Register</Link>
+                                    <Link to = "/register/hospital" className="btn btn--white">Register</Link>
                                 </div>
                             </div>
                         </div>

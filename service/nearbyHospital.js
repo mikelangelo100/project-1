@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('../config/config.js');
+const config = require('../config/config');
 
 const nearbyHospital = (lat,long,callback)=>{
 
@@ -12,6 +12,7 @@ const nearbyHospital = (lat,long,callback)=>{
 		}
 
 		const items = JSON.parse(body).results;
+		console.log(items)
 		
 		//Checks if any place found or not
 	    if(items.length>0){

@@ -13,6 +13,11 @@ export const ADD_POST = 'ADD_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const GET_PROFILE_IMAGE = 'GET_PROFILE_IMAGE';
 export const SELECT_ACCOUNT = 'SELECT_ACCOUNT';
+export const GET_SYMPTOMS = 'GET_SYMPTOMS';
+export const GET_DIAGNOSIS ='GET_DIAGNOSIS';
+export const TRACK_SYMPTOMS = 'TRACK_SYMPTOMS';
+export const GET_NEARBYDOCTORS = "GET_NEARBYDOCTORS";
+export const SEARCH_TEXT = "SEARCH_TEXT";
 export const DONATE_BLOOD = 'DONATE_BLOOD';
 
 

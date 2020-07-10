@@ -60,3 +60,45 @@ export const logoutUser = () => dispatch => {
 };
 
 
+
+
+// Register Hospital
+export const registerHospital = (userData, history) => dispatch => {
+  axios
+    .post('/register/hospital', userData)
+    .then(res => history.push('/login/hospital'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+
+
+// Hospital Login - Get User Token
+export const loginHospital = userData => dispatch => {
+  axios
+    .post('/api/users/login/hospital', userData)
+    .then(res => {
+      // Save to localStorage
+      const { token } = res.data;
+      // Set token to ls
+      localStorage.setItem('jwtToken', token);
+      // Set token to Auth header
+      setAuthToken(token);
+      // Decode token to get user data
+      const decoded = jwt_decode(token);
+      // Set current user
+      dispatch(setCurrentUser(decoded));
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+

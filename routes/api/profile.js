@@ -7,6 +7,7 @@ const passport = require('passport');
 const validateProfileInput = require('../../validation/profile');
 const validateExperienceInput = require('../../validation/experience');
 const validateEducationInput = require('../../validation/education');
+const { BloodGroup } = require('../../models/bloodGroup')
 
 // Load Profile Model
 const Profile = require('../../models/Profile');
@@ -40,6 +41,17 @@ router.get(
   }
 );
 
+
+
+
+
+router.get("/username", async (req, res) => {
+  const username = await Profile.find()
+    .select("-__v")
+    .sort("name");
+  res.send(username);
+});
+
 // @route   GET api/profile/all
 // @desc    Get all profiles
 // @access  Public
@@ -67,6 +79,7 @@ router.get('/name/:name', (req, res) => {
   const errors = {};
 
   Profile.findOne({ name: req.params.name })
+  console.log(name)
     .populate('user', ['name', 'avatar'])
     .then(profile => {
       if (!profile) {
@@ -107,14 +120,16 @@ router.get('/user/:user_id', (req, res) => {
 router.post(
   '/', 
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
+  async (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body);
+    const bloodGroup = await BloodGroup.findById(req.body.bloodGroup);
+    
     // Check Validation
     if (!isValid) {
       // Return any errors with 400 status
       return res.status(400).json(errors);
     }
-``
+
 
     // Get fields
     const profileFields = {};
@@ -124,7 +139,10 @@ router.post(
     if (req.body.age) profileFields.age = req.body.age;
     if (req.body.phonenumber) profileFields.phonenumber =req.body.phonenumber;
     if (req.body.city) profileFields.city = req.body.city;
-    if (req.body.bloodGroup) profileFields.bloodGroup = req.body.bloodGroup;
+    if (req.body.bloodGroup) profileFields.bloodGroup = {
+      _id: bloodGroup._id,
+      name:bloodGroup.name
+    };
     if (req.body.contact) profileFields.contact = req.body.contact;
     if (req.body.bio) profileFields.bio = req.body.bio;
   

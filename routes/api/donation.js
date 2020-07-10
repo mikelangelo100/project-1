@@ -19,7 +19,9 @@ router.get('/',(req,res)=>{
 // (API 1) -  Route to get list of Symptoms from using Apimedic API
 router.get('/getSymptoms',(req,res)=>{
 	symptoms.callApi((data)=>{
-		res.json(data);						//Got the list of Symptoms from Aimedic API
+		res.json(data);
+		console.log(data)	
+							//Got the list of Symptoms from Aimedic API
 	});
 });
 
