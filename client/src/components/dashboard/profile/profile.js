@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Spinner from  '../../common/Spinner';
-import { getProfileByName } from '../../../actions/profileActions'
+import { getProfileByHandle } from '../../../actions/profileActions'
 import Sidebar from '../sidebar'
 
 class MyProfile extends Component {
   componentDidMount() {
-    if (this.props.match.params.name) {
-      this.props.getProfileByName(this.props.match.params.name);
+    if (this.props.match.params.handle) {
+      this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -43,7 +43,7 @@ class MyProfile extends Component {
 
 
 MyProfile.propTypes = {
-  getProfileByName: PropTypes.func.isRequired,
+  getProfileByHandle: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -51,5 +51,5 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getProfileByName })(MyProfile);
+export default connect(mapStateToProps, { getProfileByHandle })(MyProfile);
 

@@ -15,7 +15,7 @@ class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      handle: '',
       gender: '',
       age: '',
       phonenumber: '', 
@@ -40,7 +40,7 @@ class CreateProfile extends Component {
     e.preventDefault();
 
     const profileData = {
-      name: this.state.name,
+      handle: this.state.handle,
       age: this.state.age,
       gender: this.state.gender,
       city: this.state.city,
@@ -94,7 +94,7 @@ class CreateProfile extends Component {
                 <div className = "form-content__fullname">
                 <TextFieldGroup
                   placeholder="* Full name"
-                  name="name"
+                  name="handle"
                   value={this.state.handle}
                   onChange={this.onChange}
                   error={errors.handle}

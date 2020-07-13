@@ -7,7 +7,7 @@ const passport = require('passport');
 const validateProfileInput = require('../../validation/profile');
 const validateExperienceInput = require('../../validation/experience');
 const validateEducationInput = require('../../validation/education');
-const { BloodGroup } = require('../../models/bloodGroup')
+ const { BloodGroup } = require('../../models/bloodGroup')
 
 // Load Profile Model
 const Profile = require('../../models/Profile');
@@ -29,7 +29,7 @@ router.get(
     const errors = {};
 
     Profile.findOne({ user: req.user.id })
-      .populate('user', ['name', 'avatar'])
+      .populate('user', ['name' ])
       .then(profile => {
         if (!profile) {
           errors.noprofile = 'There is no profile for this user';
@@ -75,12 +75,12 @@ router.get('/all', (req, res) => {
 // @desc    Get profile by handle
 // @access  Public
 
-router.get('/name/:name', (req, res) => {
+router.get('/handle/:handle', (req, res) => {
   const errors = {};
 
-  Profile.findOne({ name: req.params.name })
-  console.log(name)
-    .populate('user', ['name', 'avatar'])
+  Profile.findOne({ handle: req.params.handle })
+  console.log(handle)
+    .populate('user', ['name'])
     .then(profile => {
       if (!profile) {
         errors.noprofile = 'There is no profile for this user';
@@ -120,9 +120,10 @@ router.get('/user/:user_id', (req, res) => {
 router.post(
   '/', 
   passport.authenticate('jwt', { session: false }),
-  async (req, res) => {
+   (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body);
-    const bloodGroup = await BloodGroup.findById(req.body.bloodGroup);
+    
+    
     
     // Check Validation
     if (!isValid) {
@@ -134,15 +135,14 @@ router.post(
     // Get fields
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (req.body.name) profileFields.name = req.body.name;
+    if (req.body.handle) profileFields.handle = req.body.handle;
     if (req.body.gender) profileFields.gender = req.body.gender;
     if (req.body.age) profileFields.age = req.body.age;
     if (req.body.phonenumber) profileFields.phonenumber =req.body.phonenumber;
     if (req.body.city) profileFields.city = req.body.city;
-    if (req.body.bloodGroup) profileFields.bloodGroup = {
-      _id: bloodGroup._id,
-      name:bloodGroup.name
-    };
+    if (req.body.bloodGroup) profileFields.bloodGroup = req.body.bloodGroup;
+      
+  
     if (req.body.contact) profileFields.contact = req.body.contact;
     if (req.body.bio) profileFields.bio = req.body.bio;
   
@@ -165,10 +165,10 @@ router.post(
         if(!profile){
           // Check if name exists (handle should be unoque for all profile)
           Profile
-            .findOne({ name: profileFields.name})
+            .findOne({ handle: profileFields.handle})
             .then(profile => {
             if(profile){
-              errors.name = 'Name already exists';
+              errors.handle = 'Name already exists';
               res.status(400).json(errors);
             }
           });
@@ -178,10 +178,10 @@ router.post(
         else{
           // Check if handle exists for other user
           Profile
-            .findOne({ name: profileFields.name})
+            .findOne({ handle: profileFields.handle})
             .then(p => {
-            if(profile.name !== p.name){
-              errors.name = 'Name already exists';
+            if(profile.handle !== p.handle){
+              errors.handle = 'Name already exists';
               res.status(400).json(errors);
             }
           });

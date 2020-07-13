@@ -4,7 +4,7 @@ const isEmpty = require('./is-empty');
 module.exports = function validateProfileInput(data) {
   let errors = {};
 
-  data.name = !isEmpty(data.name) ? data.name : '';
+  data.handle = !isEmpty(data.handle) ? data.handle : '';
   data.gender = !isEmpty(data.gender) ? data.gender : '';
   data.age = !isEmpty(data.age) ? data.age : '';
  // data.phonenumber = !isEmpty(data.phonenumber) ? data.phonenumber : '';
@@ -13,12 +13,12 @@ module.exports = function validateProfileInput(data) {
   data.contact = !isEmpty(data.contact) ? data.contact : '';
 
 
-  if (!Validator.isLength(data.name, { min: 2, max: 40 })) {
-    errors.name = 'Profile name needs to between 2 and 40 characters';
+  if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
+    errors.handle = 'Profile name needs to between 2 and 40 characters';
   }
 
-  if (Validator.isEmpty(data.name)) {
-    errors.name = 'Profile name is required';
+  if (Validator.isEmpty(data.handle)) {
+    errors.handle = 'Profile name is required';
   }
 
   if (Validator.isEmpty(data.gender)) {

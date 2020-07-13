@@ -8,7 +8,7 @@ const ProfileSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
-  name: {
+  handle: {
     type: String,
     required: true,
     max: 40
@@ -26,7 +26,7 @@ const ProfileSchema = new Schema({
     required : true
   },
   bloodGroup: {
-    type: bloodGroupSchema,
+    type: [String],
     required: true
   },
   city: {
