@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const HospitalSchema = new Schema({
-  name: {
+  hospitalName: {
     type: String,
     required: true
   },

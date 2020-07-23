@@ -63,9 +63,9 @@ export const logoutUser = () => dispatch => {
 
 
 // Register Hospital
-export const registerHospital = (userData, history) => dispatch => {
+export const registerHospital = (hospitalData, history) => dispatch => {
   axios
-    .post('/register/hospital', userData)
+    .post('/register/hospital', hospitalData)
     .then(res => history.push('/login/hospital'))
     .catch(err =>
       dispatch({

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import '../../css/pages/login.min.css';
 
 
-class Login extends Component {
+class HospitalLogin extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,13 +21,13 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/hospital/dashboard');
+      this.props.history.push('/dashboard/hospital');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/hospital/dashboard');
+      this.props.history.push('/dashboard/hospital');
     }
 
     if (nextProps.errors) {
@@ -106,7 +106,7 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
+HospitalLogin.propTypes = {
   loginHospital: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -117,4 +117,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { loginHospital })(Login);
+export default connect(mapStateToProps, { loginHospital })(HospitalLogin);

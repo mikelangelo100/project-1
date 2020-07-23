@@ -18,6 +18,8 @@ import PrivateRoute from './components/common/PrivateRoute';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import HospitalLogin from './components/auth/HospitalLogin';
+import HospitalRegister from './components/auth/HospitalRegister';
 import Dashboard from './components/dashboard/Dashboard';
 import FAQs from './components/layout/Faq';
 import CreateProfile from './components/create-profile/CreateProfile';
@@ -77,6 +79,8 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <div className="container">
               <Route exact path="/register" component={Register} />
+              <Route exact path="/register/hospital" component={HospitalRegister} />
+              <Route exact path="/login/hospital" component={HospitalLogin} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
               <Route exact path="/faqs" component={FAQs} />

@@ -9,12 +9,13 @@ import Avatar from '../../sass/img/avatar-form.png';
 import '../../css/dashboard/main.min.css';
 
 
-class Register extends Component {
+class HospitalRegister extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: '',
+      hospitalName: '',
+      hospitalNumber: '',
+      hospitalEmail: '',
       password: '',
       password2: '',
       errors: {}
@@ -41,9 +42,9 @@ class Register extends Component {
     e.preventDefault();
 
     const newUser = { 
-      hospitalName: this.state.name,
-      hospitalNumber: this.state.email,
-      hospitalEmail: this.state.email,
+      hospitalName: this.state.hospitalName,
+      hospitalNumber: this.state.hospitalNumber,
+      hospitalEmail: this.state.hospitalEmail,
       password: this.state.password,
       password2: this.state.password2
     };
@@ -67,33 +68,42 @@ class Register extends Component {
               <form noValidate onSubmit={this.onSubmit} className = "form">
                 <div className = "reg-control">
                  <TextFieldGroup
-                  placeholder="Hospital Name"
+                  placeholder="Hospital Number"
                   name="hospitalNumber"
                   type="number"
-                  value={this.state.name}
+                  value={this.state.hospitalNumber}
                   onChange={this.onChange}
-                  error={errors.name}
+                  error={errors.hospitalNumber}
                 />
-                <label for = "fullname" className = "form__label">Enter Hospital Name</label>
+                <label for = "Hospital Name" className = "form__label">Enter Hospital Name</label>
                 <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"                
-                  value={this.state.email}
+                  placeholder="Hospital Name"
+                  name="hospitalName"
+                  type="name"                
+                  value={this.state.hospitalName}
                   onChange={this.onChange}
-                  error={errors.email}
+                  error={errors.hospitalName}
 
                 />
                 <label for = "email" className = "form__label">Enter Hospital Email Address</label>
                 <TextFieldGroup
-                  placeholder="Password"
+                  placeholder="Hospital Email"
+                  name="hospitalEmail"                  
+                  type="email"
+                  value={this.state.hospitalEmail}
+                  onChange={this.onChange}
+                  error={errors.hospitalEmail}
+                />
+                 <label for = "password" className = "form__label">Enter your Password</label>
+                <TextFieldGroup
+                  placeholder="password"
                   name="password"                  
                   type="password"
                   value={this.state.password}
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <label for = "password" className = "form__label">Enter your password</label>
+              
                 <TextFieldGroup
                   placeholder="Confirm Password"
                   name="password2"
@@ -115,7 +125,7 @@ class Register extends Component {
   }
 }
 
-Register.propTypes = {
+HospitalRegister.propTypes = {
   registerHospital: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -126,4 +136,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { registerHospital })(withRouter(Register));
+export default connect(mapStateToProps, { registerHospital })(withRouter(HospitalRegister));

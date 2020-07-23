@@ -35,9 +35,9 @@ class Landing extends Component {
                 <ul className="navigation__list">
                     <li className="navigation__item"><Link to="#" className="navigation__link">About Us</Link></li>
                     <li className="navigation__item"><Link to="/faqs" component={FAQs} className="navigation__link">FAQ</Link></li>
-                    <li className="navigation__item"><Link to="#" className="navigation__link">Learn more</Link></li>
-                    <li className="navigation__item"><Link to="#" className="navigation__link">Login</Link></li>
-                    <li className="navigation__item"><Link to="#" className="navigation__link">Register</Link></li>
+                    <li className="navigation__item"><Link to="/faqs" component={FAQs} className="navigation__link">Learn more</Link></li>
+                    <li className="navigation__item"><Link to="/faqs"  component={FAQs} className="navigation__link">Login</Link></li>
+                    <li className="navigation__item"><Link to="/faqs" component={FAQs} className="navigation__link">Register</Link></li>
                     </ul>
             </nav>
         </div>
@@ -203,7 +203,7 @@ class Landing extends Component {
                            </div>
                            <div className="card__side card__side--back card__side--back-1">
                                 <div className="card__cta">
-                                    <Link to ="" className="btn btn--white">Register</Link>
+                                    <Link to ="/register" className="btn btn--white">Register</Link>
                                 </div>
                             </div>
                        </div>
@@ -260,7 +260,7 @@ class Landing extends Component {
                             <div className="card__side card__side--back card__side--back-3">
                                 <div className="card__cta">
                     
-                                    <Link to=""  className="btn btn--white">Register</Link>
+                                <Link to = "/register/hospital" className="btn btn--white">Register</Link>
                                 </div>
                             </div>
                         </div>

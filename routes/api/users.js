@@ -9,10 +9,12 @@ const passport = require('passport');
 // Load Input Validation
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const validateHospitalRegisterInput = require('../../validation/hospitalRegister')
+const validateHospitalLoginInput = require('../../validation/hospitallogin')
 
 // Load User model
 const User = require('../../models/User');
-const Hospital = require('../../models/User');
+const Hospital = require('../../models/hospital');
 
 // @route   GET api/users/test
 // @desc    Tests users route
@@ -126,16 +128,16 @@ router.get(
 );
 ////////////////////////HOSPITAL ROUTE ////
 router.post('/register/hospital', (req, res) => {
-  const { errors, isValid } = validateRegisterInput(req.body);
+  const { errors, isValid } = validateHospitalRegisterInput(req.body);
 
   // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  Hospital.findOne({ hospitalEmail: req.body.hospitalEmail }).then(user => {
+  Hospital.findOne({ hospitalNumber: req.body.hospitalNumber }).then(user => {
     if (user) {
-      errors.email = 'Email already exists';
+      errors.hospitalNumber = 'Hospital Number already exists';
       return res.status(400).json(errors);
     } else {
       const avatar = gravatar.url(req.body.email, {
@@ -144,8 +146,8 @@ router.post('/register/hospital', (req, res) => {
         d: 'mm' // Default
       });
 
-      const newUser = new User({
-        name: req.body.name,
+      const newHospital = new Hospital({
+        hospitalName: req.body.hospitalName,
         hospitalEmail: req.body.hospitalEmail,
         hospitalNumber: req.body.hospitalNumber,
         avatar,
@@ -153,10 +155,10 @@ router.post('/register/hospital', (req, res) => {
       });
 
       bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
+        bcrypt.hash(newHospital.password, salt, (err, hash) => {
           if (err) throw err;
-          newUser.password = hash;
-          newUser
+          newHospital.password = hash;
+          newHospital
             .save()
             .then(user => res.json(user))
             .catch(err => console.log(err));
@@ -172,7 +174,7 @@ router.post('/register/hospital', (req, res) => {
 // @desc    Login User / Returning JWT Token
 // @access  Public
 router.post('/login/hospital', (req, res) => {
-  const { errors, isValid } = validateLoginInput(req.body);
+  const { errors, isValid } = validateHospitalLoginInput(req.body);
 
   // Check Validation
   if (!isValid) {
@@ -194,7 +196,7 @@ router.post('/login/hospital', (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User Matched
-        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
+        const payload = { id: user.id, name: user.hospitalName, avatar: user.avatar }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
