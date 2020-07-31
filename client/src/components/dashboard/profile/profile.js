@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Link,Route, matchPath } from 'react-router-dom';
 import Spinner from  '../../common/Spinner';
-import { getProfileByHandle } from '../../../actions/profileActions'
+import { getCurrentProfile } from '../../../actions/profileActions'
 import Sidebar from '../sidebar'
+import ProfileDetails from './profileDetails'
+import Security from './Security'
+import UserProfile from './UserProfile'
+import Settings from './Settings'
 
 class MyProfile extends Component {
   componentDidMount() {
-    if (this.props.match.params.handle) {
-      this.props.getProfileByHandle(this.props.match.params.handle);
-    }
+    this.props.getCurrentProfile()
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push('/not-found');
-    }
-  }
+  
 
     render() {
       const { profile, loading } = this.props.profile;
@@ -26,24 +24,82 @@ class MyProfile extends Component {
       profileContent = <Spinner />;
     } else {
       profileContent = (
-          <Sidebar />
+        <div className= "main-profile-wrapper">    
+          <Sidebar className="profile-sidebar" />
+          {/* <ProfileDetails profile={profile} className="profile-details-wrapper"/> */}
+            <Router>
+              <div className="user-profile">
+                
+              <div className="profile-details-form">       
+              <MenuLink
+              activeOnlyWhenExact={true}
+              to='/profile/'
+              label="Profile Details"
+            /></div> 
+              <div className="profile-settings">
+              <MenuLink
+              to='/profile/settings'
+              label="Settings"
+            />
+              </div>
+              <div className="profile-security">
+              <MenuLink
+            
+              to='/profile/security'
+              label="Security"
+            />
+              </div>
+            
+          
+            
+            <Switch>
+              <Route exact path='/profile'>
+                <UserProfile 
+                phonenumber="profile.phonenumber"
+                />
+              </Route>
+           
+              <Route exact path='/profile/settings' component={Settings}>
+                <Settings />
+              </Route >
+              <Route exact path='/profile/security' component={Security}>
+                <Security />
+              </Route>
+            
+            </Switch>
+           
+            </div>   
+           </Router>
+          
+        </div>
+
           );
     }
     return (
-      <div className="profile">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">{profileContent}</div>
+          <div className="main-profile-wrapper">
+            <div>{profileContent}</div>
           </div>
-        </div>
-      </div>
+        
+            
+ 
     );
   }
 }
-
+function MenuLink ({ label, to, activeOnlyWhenExact }) {
+  let match = matchPath ({
+     path: to, 
+     exact: activeOnlyWhenExact
+  });
+  return (
+    <div className = {match ? "active" : ""}>
+      {match && ""}
+    <Link to={to}>{label}</Link>
+    </div>
+  )
+}
 
 MyProfile.propTypes = {
-  getProfileByHandle: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -51,5 +107,5 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getProfileByHandle })(MyProfile);
+export default connect(mapStateToProps, { getCurrentProfile })(MyProfile);
 

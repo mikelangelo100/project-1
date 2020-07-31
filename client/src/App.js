@@ -37,6 +37,8 @@ import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import NotFound from './components/not-found/NotFound';
 import Profile from './components/profile/Profile'
+import Settings from './components/dashboard/profile/Settings'
+import Security from './components/dashboard/profile/Security'
 
 import './css/main.min.css';
 import 'react-toastify/dist/ReactToastify.css'
@@ -84,7 +86,7 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
               <Route exact path="/faqs" component={FAQs} />
-              <Route exact path="/profile/name/:name" component={MyProfile} />
+             
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -132,12 +134,25 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute
-                  exact
-                  path="/me"
-                  component={Profile}
+                  exact 
+                  path="/profile" 
+                  component={MyProfile}
                 />
               </Switch>
-             
+              <Switch>
+                <PrivateRoute
+                  exact 
+                  path="/profile/settings" 
+                  component={Settings}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact 
+                  path="/profile/security" 
+                  component={Security}
+                />
+              </Switch>
               <Switch>
                 <PrivateRoute exact path="/feed" component={Posts} />
               </Switch>

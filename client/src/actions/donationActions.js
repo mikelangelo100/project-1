@@ -8,7 +8,8 @@ import {
     GET_NEARBYDOCTORS,
     DONATE_BLOOD,
     SEARCH_TEXT,
-    GET_ERRORS
+    GET_ERRORS,
+    SEARCH_BLOOD
 
 } from './types';
 
@@ -32,23 +33,18 @@ export const getSymptoms = () => dispatch => {
 };
 
 // Get medical diagnosis
-export const getDiagnosis = (diagnosisParameters) => dispatch => {
+export const getDiagnosis = (diagnosisParameters, history) => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`api/donate/getMedicalConditions`, diagnosisParameters)
-    .then(res =>
-      dispatch({
+    .get(`api/donation/getMedicalConditions`, diagnosisParameters)
+    .then(res => history.push('/diagnosisResult'))
+     .catch(err => 
+       dispatch({
         type: GET_DIAGNOSIS,
-        payload: res.data
+        payload: err.response.data
       })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_DIAGNOSIS,
-        payload: null
-      })
-    );
-};
+     );
+    };
 
 
 export const getNearbyDoctors = () => dispatch => {
@@ -84,6 +80,22 @@ export const getNearbyDoctors = () => dispatch => {
           type: GET_ERRORS,
           payload: err.response.data
         })
+      );
+  };
+
+  export const searchBlood = bloodGroup => dispatch => {
+    dispatch(setProfileLoading());
+    axios
+      .get(`/api/profile/all`, bloodGroup)
+      .then(res => 
+        dispatch({
+          type: SEARCH_BLOOD,
+          payload: res.data
+        }))
+      .catch(err =>
+        dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data})
       );
   };
 

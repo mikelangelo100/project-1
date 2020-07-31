@@ -3,6 +3,8 @@ import {
     GET_DIAGNOSIS,
     PROFILE_LOADING,
     GET_NEARBYDOCTORS,
+    SEARCH_BLOOD,
+    SEARCH_TEXT
    
   } from '../actions/types';
     
@@ -14,6 +16,7 @@ import {
     latitude: null,
     longitude:null,
     searchText: '',
+    bloodGroup: null
 
   };
   
@@ -54,7 +57,12 @@ import {
               year_of_birth: action.payload,
               loading: false
             };
-     
+        case SEARCH_BLOOD:
+          return {
+            ...state,
+            bloodGroup: action.payload,
+            loading: false
+          };
       default:
         return state;
     }

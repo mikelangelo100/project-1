@@ -19,5 +19,5 @@ export const TRACK_SYMPTOMS = 'TRACK_SYMPTOMS';
 export const GET_NEARBYDOCTORS = "GET_NEARBYDOCTORS";
 export const SEARCH_TEXT = "SEARCH_TEXT";
 export const DONATE_BLOOD = 'DONATE_BLOOD';
-
+export const SEARCH_BLOOD = 'SEARCH_BLOOD';
 

@@ -71,7 +71,7 @@ class HospitalRegister extends Component {
                   placeholder="Hospital Number"
                   name="hospitalNumber"
                   type="number"
-                  value={this.state.hospitalNumber}
+                  value={this.state.hospitalNumber} 
                   onChange={this.onChange}
                   error={errors.hospitalNumber}
                 />

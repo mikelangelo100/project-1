@@ -42,7 +42,7 @@ import { getDiagnosis } from  '../../../actions/donationActions'
      
     };
 
-    this.props.getDiagnosis(diagnosisParameters);
+    this.props.getDiagnosis(diagnosisParameters, this.props.history);
   }
 
   onChange(e) {
@@ -90,10 +90,10 @@ import { getDiagnosis } from  '../../../actions/donationActions'
                 <SelectListGroup
                   placeholder="Gender"
                   name="gender"
-                  value={this.state.status}
+                  value={this.state.gender}
                   onChange={this.onChange}
                   options={gender}
-                  error={errors.status}
+                  error={errors.gender}
                   info="Please select Gender"
                   
                 />

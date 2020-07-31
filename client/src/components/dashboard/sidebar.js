@@ -70,7 +70,7 @@ class Sidebar extends Component {
             </li>
             
             <li className ="side-nav__item">
-              <Link to="/profile/:handle" className="side-nav__link"> 
+              <Link to="/profile" className="side-nav__link"> 
               <div className ="user-nav__icon-box">
               <svg 
                   xmlns="http://www.w3.org/2000/svg"
