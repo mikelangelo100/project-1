@@ -27,7 +27,7 @@ import NewFileUpload from './components/create-profile/profileImg';
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-credentials/AddExperience';
 //import AddEducation from './components/add-credentials/AddEducation';
-import BloodGroup from './components/dashboard/Search/SearchTest';
+import BloodSearch from './components/dashboard/Search/SearchTable';
 import DonateBlood from './components/dashboard/donateBlood/donate'
 import MyProfile from './components/dashboard/profile/profile'
 
@@ -39,7 +39,7 @@ import NotFound from './components/not-found/NotFound';
 import Profile from './components/profile/Profile'
 import Settings from './components/dashboard/profile/Settings'
 import Security from './components/dashboard/profile/Security'
-
+import DiagnosisResult from './components/dashboard/donateBlood/DiagnosisResult'
 import './css/main.min.css';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -91,6 +91,9 @@ class App extends Component {
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
               <Switch>
+                <PrivateRoute exact path="/donate/result" component={DiagnosisResult} />
+              </Switch>
+              <Switch>
                 <PrivateRoute
                   exact
                   path="/create-profile"
@@ -129,7 +132,7 @@ class App extends Component {
                 <PrivateRoute
                   exact
                   path="/search"
-                  component={BloodGroup}
+                  component={BloodSearch}
                 />
               </Switch>
               <Switch>

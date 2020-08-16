@@ -37,8 +37,12 @@ export default class QuickActionDonate extends React.Component {
        
         >
           <div>
-            <h2>Donate Blood</h2>
-           
+            <h1 className="dialog-title">Donate Blood</h1>
+            <img src={DonateImage} className="donate-icon-lg" />
+            <p className="dialog-description">Regular donation of Blood improves good 
+              health and reduced cancer risk. It is recommended 
+              to donate blood and also check health status regularly.</p>
+              <button className="dialog-btn"><a href="/donate" className="dialog-btn-link">Donate Blood</a></button>
           </div>
         </Rodal>
       </div>

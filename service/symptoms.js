@@ -18,8 +18,10 @@ const callSymptomAPI = (callback) => {
         request({url:Symptoms_URL,qs:params,json:true}, (err, res, body) => {
             if (err) { 
                 return callback(err);
-            } 
+            }
+            console.log(body); 
             return callback(body);
+            
         }); 
     }).catch((err)=>{
         return callback(err);

@@ -9,6 +9,7 @@ const SelectListGroup = ({ name, value, error, info, onChange, options }) => {
     </option>
   ));
   return (
+   
     <div className="form-group">
       <select
         className={classnames('form-control form__input', {
@@ -23,6 +24,7 @@ const SelectListGroup = ({ name, value, error, info, onChange, options }) => {
       {info && <small className="form-info">{info}</small>}
       {error && <div className="invalid-feedback">{error}</div>}
     </div>
+    
   );
 };
 

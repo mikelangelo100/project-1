@@ -9,8 +9,8 @@ import Spinner from '../common/Spinner';
 import { logoutUser } from '../../actions/authActions';
 import { clearCurrentProfile } from '../../actions/profileActions';
 import { QuickAction } from './QuickActions';
-
-import  Search  from './Search/Search';
+import SearchTest from './Search/SearchTest'
+//import  Search  from './Search/FlipSearch';
 import DonateBlood from './donateBlood/donate'
 
 import icons from '../../sass/img/icons.svg';
@@ -18,7 +18,12 @@ import Logout from '../../img/SVG/logout.svg';
 import profilePicture from '../../sass/img/user.png';
 import ProfileActions from './ProfileActions';
 
-
+// Material UI ICONS
+import DesktopMacIcon from '@material-ui/icons/DesktopMac';
+import PersonIcon from '@material-ui/icons/Person';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import SearchIcon from '@material-ui/icons/Search';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import Logo from '../../sass/img/logowhite.png';
 import DashboardBackground from '../../img/background.svg'
@@ -38,13 +43,13 @@ class Sidebar extends Component {
 
      <div className="dashboard-content">
           <nav className= "sidebar">
+
+            {/* Readydonor Logo */}
           <img src={Logo} alt="logo" className="readydonor-logo" /> 
-            
+
+            {/* User Account */}
             <ul className = "side-nav">
-              
-           
               <center className="profile-image">
-                
                 <i class="fas fa-user-circle "></i>
               </center>                
               <Select labelId="label" id="select" value="20" className="account-dropdown">
@@ -58,27 +63,19 @@ class Sidebar extends Component {
             
              
               
-           
+               {/* Home Sidebar */}
               <li className ="side-nav__item">
               <Link to="/" className="side-nav__link navItem"> 
                 <div className ="user-nav__icon-box">
-                <i class="fas fa-desktop"></i>
+                <DesktopMacIcon />
                 <span className="side-nav__text">Home</span>
-                
               </div>
             </Link>
             </li>
-            
             <li className ="side-nav__item">
               <Link to="/profile" className="side-nav__link"> 
               <div className ="user-nav__icon-box">
-              <svg 
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  className ="side-nav__icon">
-
-                    <use xlinkHref={`${icons}#icon-user`} />
-                  </svg>
+                  <PersonIcon />
                 <span className="side-nav__text">Profile</span>
               </div>
             </Link>
@@ -86,71 +83,31 @@ class Sidebar extends Component {
             <li className ="side-nav__item">
               <Link to="/donate" component={DonateBlood} className="side-nav__link"> 
                 <div className ="user-nav__icon-box">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  className ="side-nav__icon">
-
-                    <use xlinkHref={`${icons}#icon-add-user`} />
-                  </svg>
+                  <PersonAddIcon />
                 <span className="side-nav__text">Donate Blood</span>
                
               </div>
             </Link>
             </li>
             <li className ="side-nav__item">
-              <Link to="/search" className="side-nav__link" component={Search}> 
+              <Link to="/search" className="side-nav__link" component={SearchTest}> 
                 <div className ="user-nav__icon-box">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  className ="side-nav__icon">
-
-                    <use xlinkHref={`${icons}#icon-search`} />
-                  </svg>
-              </div> 
+                 <SearchIcon />
                 <span className="side-nav__text">Search for Blood</span>
-                
+                </div> 
             </Link>
             </li>
-            <li className ="side-nav__item">
-              <Link to="/donate-blood" className="side-nav__link"> 
-                <div className ="user-nav__icon-box">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  className ="side-nav__icon">
-
-                    <use xlinkHref={`${icons}#icon-calendar`} />
-                  </svg>
-                <span className="side-nav__text">Donor list</span>
-               
-              </div>
-            </Link>
-            </li>
-            <li className ="side-nav__item">
-              <Link to="" className="side-nav__link"> 
-                <div className ="user-nav__icon-box">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  className ="side-nav__icon">
-
-                    <use xlinkHref={`${icons}#icon-location2`} />
-                  </svg>
-                <span className="side-nav__text">Contact Info</span>
-              </div>
-            </Link>
-            </li>
+          
+          
             <li className ="side-nav__item">
               <Link to="/" className="side-nav__link"> 
                 <div className ="user-nav__icon-box">
-                <a href=""
-                  onClick={this.onLogoutClick.bind(this)}>
-                  <img src={Logout}  className ="side-nav__icon" /> {' '}
-                  <span className="side-nav__text">Log out</span>
-                </a>
-                  
+                  <a href=""
+                     className="logout"
+                    onClick={this.onLogoutClick.bind(this)}>
+                    <ExitToAppIcon />
+                    <span className="side-nav__text">Log out</span>
+                  </a>
               </div>
             </Link>
             </li>

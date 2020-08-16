@@ -20,7 +20,7 @@ router.get('/',(req,res)=>{
 router.get('/getSymptoms',(req,res)=>{
 	symptoms.callApi((data)=>{
 		res.json(data);
-		console.log(data)	
+			
 							//Got the list of Symptoms from Aimedic API
 	});
 });

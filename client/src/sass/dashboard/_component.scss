@@ -126,9 +126,22 @@
     padding-left: 30px;
 
     &__item {
-    
+        
     }
-    &__link:link,
+    &__link {
+        text-decoration: none;
+        color: #fff;
+    }
+    &__link:active {
+        color:rgb(226, 223, 223);
+        text-decoration: none;
+        display: block;
+        padding: 2rem 1rem;
+        text-transform: capitalize;
+        display: flex;
+        align-items: center;
+        align-self: flex-end;
+    }
     &__link:visited {
         color:rgb(226, 223, 223);
         text-decoration: none;
@@ -145,6 +158,7 @@
         color: #fff;
         border-top-left-radius: 20px;
         border-bottom-left-radius:20px;
+        text-decoration: none;
     }
     &__icon {
         width: 1.85rem;
@@ -161,6 +175,8 @@
         padding-left: 0;
         padding-right: 50px;
         margin-bottom: 0; 
+        font-weight: 600;
+        font-size: 18px;
         
     }
 }
@@ -308,6 +324,8 @@
 
 }
 .dashboard {
+    display: flex;
+    flex: 0.8;
     border: 1px solid black;
     height: 356px;
     width: 78%;
@@ -315,6 +333,7 @@
     background-color: white !important;
     position: absolute;
     left: 10px;
+    z-index: -2;
 }
 .profile-welcome {
     
@@ -367,6 +386,17 @@
  
 .rodal-dialog {
     left: 1200px;
+    
+}
+.donate-icon-lg {
+    font-size: 40px;
+}
+.dialog-title {
+    font-weight: 700;
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+
 }
 .dashboard-background {
    height: 400px;
@@ -399,8 +429,31 @@
 .quick-action-donate {
     padding: 100px;
 }
-
-
+.dialog-description {
+    font-size: 22px;
+    color: #4779FF;
+    padding: 10px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dialog-btn {
+    padding: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #FF0121;
+    margin-top: 15px;
+    margin-left: 130px;
+    border-radius: 40px;
+    border-style: none;
+    border: none;
+    cursor: pointer;
+}
+.dialog-btn-link {
+    text-decoration: none;
+    color: #fff;
+    
+}
 
 /////DONATE FORM ////////
 .donate-form-wrapper {
@@ -463,7 +516,11 @@
 
 /////////SEARCH///
 
-
+.logout {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
 
 .staggered-list-content {
     width: 400px;
@@ -675,6 +732,111 @@
       position: absolute;
       left: 100px;
   }
+  .select-css {
+	display: block;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	width: 100%;
+	max-width: 100%; /* useful when width is set to anything other than 100% */
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+    background-color: #fff;
+  }
+  .blood-search-bar {
+      appearance: none;
+      outline: 0;
+      background-color: white;
+      width: 40%;
+      height: 40px;
+     position: absolute;
+     margin-top: 100px;
+     left: 500px;
+     border: 2px solid red;
+     border-radius: 20px;
+     font-family: Arial, Helvetica, sans-serif;
+     padding-left: 10px;
+     font-size: 12px;
+     font-weight: 300;
+      
+  }
+  .blood-search-title {
+      font-size: 40px;
+      font-weight: 900;
+      text-align: center;
+      color: black;
+      padding-top: 30px;
+  }
+
+.result-container{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+.result-page-title {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+    top: 100px;
+}
+.result__page {
+      flex: 1;
+      background-color: #E08686;
+      display: grid;
+      place-items: center;
+      
+}
+.main_result {
+    background-color: #fff;
+    border-radius: 20px;
+    width: 40%;
+    height: 60vh;
+    align-items: flex-end;
+     
+
+}
+.result__table {
+    display: flex;
+    align-items: center; 
+}
+.table_content {
+    margin: 40px;
+    margin-left: 100px;
+    margin-top: 80px;
+    height: 50vh;
+    width: 35%;
+}
+.table_header {
+    
+    color: #000;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+.entered_symptom {
+    padding-left: 150px;
+    color: #B21111;
+    font-style: italic;
+}
+.result_items {
+    color: #5A3840;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px;
+   
+
+}
+
   @media (min-width: 1200px) {
     .container{
         max-width: 1750px;

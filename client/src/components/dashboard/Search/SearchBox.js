@@ -2,10 +2,11 @@ import React from 'react'
 
 const SearchBox = ({ value, onChange}) => {
     return (
-        <input type="text"
+        <input 
+        type="text"
         name="query"
-        className="form-control"
-        placeholder="Search"
+        className="blood-search-bar"
+        placeholder="Search..."
         value={value}
         onChange={e => onChange(e.currentTarget.value)}
     />);

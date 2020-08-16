@@ -40,8 +40,12 @@ export default class QuickActionSearch extends Component {
        
         >
           <div>
-            <h2>Search for Blood</h2>
+            <h2 className="dialog-title">Search for Blood</h2>
             <img src={SearchImage} />
+            <p className="dialog-description">Search for Blood is feature
+            that enable you to search for donors on this platform
+            whenever you are in urgent need for blood.</p>
+              <button className="dialog-btn"><a href="/search" className="dialog-btn-link">Search for blood</a></button>
           </div>
         </Rodal>
       </div>

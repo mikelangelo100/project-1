@@ -4,28 +4,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Select from '@material-ui/core/Select';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
-import Spinner from '../common/Spinner';
+import Spinner from '../common/Spinner'
+
 import { logoutUser } from '../../actions/authActions';
 import { QuickAction } from './QuickActions';
 
-//import HorizontalLabelPositionBelowStepper from './UserForm'
-
-import  BloodGroup  from './Search/SearchTest';
 import DonateBlood from './donateBlood/donate'
-
 import icons from '../../sass/img/icons.svg';
 import profilePicture from '../../sass/img/user.png';
 import ProfileActions from './ProfileActions';
-
-
-
-
 import Logo from '../../sass/img/logowhite.png';
 import DashboardBackground from '../../img/background.svg'
 
 import '../../css/dashboard/main.min.css';
 import Sidebar from './sidebar';
-
 
 
 class Dashboard extends Component {
@@ -96,11 +88,7 @@ class Dashboard extends Component {
     
       <div className="dashboard-container">
        <Sidebar />
-          <main className = "main-content">
-           
-              {dashboardContent}
-          </main>
-             
+       {dashboardContent}  
           </div>
         
       
