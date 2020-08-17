@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import Sidebar from  '../sidebar'
 
 class DiagnosisResult extends Component {
-    
+  
     render() {
         // const results = this.props.data.map(result => {
         //     const Accuracy1 = result[0].Issue.Accuracy;
         //     const result1 = result[0].Issue.Profname;
             
         // })
+    
         return(
             <div className="result-container">
                 <Sidebar className="sidebar_result" />
@@ -26,7 +27,7 @@ class DiagnosisResult extends Component {
                                 <td className="entered_symptom">Diagnosis</td>
                             </tr>
                             <tr className="result_items">
-        {/* <td>{this.result.Accuracy1}</td> */}
+                                 <td>54</td> 
                                 <td className="entered_symptom">Cephalgia</td>
                             </tr>
                             <tr className="result_items"> 

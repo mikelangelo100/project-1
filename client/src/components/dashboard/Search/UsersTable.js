@@ -10,7 +10,7 @@ class UsersTable extends Component {
       label: "Username",
       content: profile => <Link to={`/profile/${profile._id}`}>{profile.name}</Link>
     },
-    { path: "bloodGroup.name", label: "Blood Group" },
+    // { path: "bloodType", label: "Blood Group" },
   
   ];
 
@@ -18,12 +18,15 @@ class UsersTable extends Component {
     const { username, onSort, sortColumn } = this.props;
 
     return (
-      <Table
+      
+      <Table 
+  
         columns={this.columns}
         data={username}
         sortColumn={sortColumn}
         onSort={onSort}
       />
+    
     );
   }
 }

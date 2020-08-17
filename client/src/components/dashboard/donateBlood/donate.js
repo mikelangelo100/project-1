@@ -66,7 +66,7 @@ import {  getDiagnosis } from  '../../../actions/donationActions'
         },
         
         );
-        this.props.history.push('/donate/result');
+        this.props.history.push('/donate/result', this.state.diagnosis);
       })
       .catch(error => this.setState({error, isLoading: false}))
     
