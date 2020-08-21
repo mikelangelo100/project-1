@@ -3,10 +3,10 @@ import axios from 'axios';
 import {
     GET_SYMPTOMS,
     GET_DIAGNOSIS,
-    TRACK_SYMPTOMS,
+  
     PROFILE_LOADING,
     GET_NEARBYDOCTORS,
-    DONATE_BLOOD,
+   
     SEARCH_TEXT,
     GET_ERRORS,
     SEARCH_BLOOD

@@ -4,12 +4,10 @@ import Sidebar from  '../sidebar'
 class DiagnosisResult extends Component {
   
     render() {
-        // const results = this.props.data.map(result => {
-        //     const Accuracy1 = result[0].Issue.Accuracy;
-        //     const result1 = result[0].Issue.Profname;
-            
-        // })
-    
+ 
+    const result = this.props.location.state;
+   
+  
         return(
             <div className="result-container">
                 <Sidebar className="sidebar_result" />
@@ -17,27 +15,33 @@ class DiagnosisResult extends Component {
                     <h1 className="result-page-title">RESULT</h1>
                     <div className="main_result">
                     <div className="result__table">
+                       
                         <table className="table_content">
-                            <thead className="table_header">
-                                <td>Symptoms</td>
-                                <td className="entered_symptom">headache</td>
-                            </thead>
+                          {/* <tr> 
+                              <td>Symptoms</td>
+                              <td>  
+                              { result.map(userResult1 => {
+                            return(
+                                
+                            ) 
+                        })}</td></tr> */}
                             <tr className="result_items">
+                                 <td>Symptoms</td>
                                 <td>Accuracy</td>
-                                <td className="entered_symptom">Diagnosis</td>
+                                <td>Diagnosis</td>
                             </tr>
-                            <tr className="result_items">
-                                 <td>54</td> 
-                                <td className="entered_symptom">Cephalgia</td>
-                            </tr>
-                            <tr className="result_items"> 
-                                <td>67%</td>
-                                <td className="entered_symptom">stomach</td>
-                            </tr>
-                            <tr className="result_items">
-                                <td>69%</td>
-                                <td className="entered_symptom">hunger</td>
-                            </tr>
+                            { result.map(userResult => {
+                            return(
+                                <tr className="result_items">
+                                    <td className="entered_symptom">{userResult.Issue.Name}</td>
+                                    <td className="entered_symptom">{userResult.Issue.Accuracy}</td>
+                                    <td className="entered_symptom">{userResult.Issue.IcdName}</td>
+                                </tr>
+ 
+                            )
+                            
+                        })}
+                            
                         </table>
                     </div>
                     </div>

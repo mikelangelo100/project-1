@@ -35,6 +35,7 @@ class MyProfile extends Component {
               activeOnlyWhenExact={true}
               to='/profile/'
               label="Profile Details"
+              className="profile-link"
             /></div> 
               <div className="profile-settings">
               <MenuLink

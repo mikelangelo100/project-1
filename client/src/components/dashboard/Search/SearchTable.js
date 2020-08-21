@@ -3,6 +3,7 @@ import axios from "axios";
 import SearchBox from "./SearchBox";
 import _ from "lodash";
 import UsersTable from "./UsersTable";
+import ListGroup from "./listGroup";
 import { paginate } from './utils/paginate';
 import Sidebar from '../sidebar'
 
@@ -39,7 +40,7 @@ class BloodSearch extends Component {
         axios.get('/api/profile/username')
             .then(response => response.data)
             .then(data => {
-              console.log(data)
+            
               this.setState({bloodType : data,
               isLoading: false,
               },
@@ -67,9 +68,9 @@ class BloodSearch extends Component {
         
 getPagedData = () => {
   const userDetails = this.state.bloodType.map(userBloodGroup => {
-    const {_id, name} = userBloodGroup;
+    const {_id, handle} = userBloodGroup;
     return(
-    <li key= {_id}>{name}</li>
+    <li key= {_id}>{handle}</li>
     )
   })
     const {
@@ -78,10 +79,10 @@ getPagedData = () => {
       sortColumn,
       selectedBloodGroup,
       searchQuery,
-      handles
+     bloodType
     } = this.state;
     // let filtered =userDetails;
-    let filtered =this.state.bloodType;
+    let filtered =bloodType;
     // const UnFilteredName = this.state.bloodType.flatMap((users) => {
     //   if(users.name) {
     //     return users.name
@@ -89,8 +90,8 @@ getPagedData = () => {
     // }) 
     
     if (searchQuery)
-        filtered = this.state.bloodType.filter(m =>
-        m.toLowerCase().startsWith(searchQuery.toLowerCase())
+        filtered = bloodType.filter(m =>
+        m.toString.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
     else if (selectedBloodGroup && selectedBloodGroup._id)
       filtered = this.state.bloodType.filter(m => m._id === selectedBloodGroup._id);
@@ -122,6 +123,13 @@ getPagedData = () => {
         <div className="search-wrapper">
              <Sidebar /> 
             {/* <h1 className="blood-search-title">Blood Search</h1> */}
+            <div className="col-3">
+          <ListGroup
+            items={this.state.bloodType}
+            selectedItem={this.state.selectedBloodGroup}
+            onItemSelect={this.handleBloodGroupSelect}
+          />
+        </div>
             <div>
               <p className="search-total">Showing {totalCount} users in the database.</p>
             </div>
@@ -131,7 +139,7 @@ getPagedData = () => {
           
           <div className="users-table">
             <UsersTable
-            username={this.state.bloodType.handle}
+            username={this.state.bloodType}
             sortColumn={sortColumn}
             onSort={this.handleSort}
           />

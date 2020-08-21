@@ -23,6 +23,7 @@ class TableBody extends Component {
               <td key={this.createKey(item, column)}>
                 {this.renderCell(item, column)}
               </td>
+            
             ))}
           </tr>
         ))}

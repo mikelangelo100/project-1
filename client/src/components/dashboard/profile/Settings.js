@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 class Settings extends Component {
     render(){
         return(
-            <div  className="user-info-container">
-               <form>
+            
+               <form className="profile-form">
                          <div class="form-group">
                             <label for="formGroupExampleInput">Old password</label>
                             <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Old password" />
@@ -18,7 +18,7 @@ class Settings extends Component {
                             <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Confirm new Password" />
                         </div>
                 </form>
-            </div>
+        
         );
     }
 }

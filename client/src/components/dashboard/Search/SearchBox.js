@@ -7,7 +7,7 @@ const SearchBox = ({ value, onChange}) => {
         name="query"
         className="blood-search-bar"
         placeholder="Search..."
-      
+        value={value}
         onChange={e => onChange(e.currentTarget.value)}
     />);
 };

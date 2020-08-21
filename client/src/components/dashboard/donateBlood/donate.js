@@ -57,16 +57,17 @@ import {  getDiagnosis } from  '../../../actions/donationActions'
 
   onSubmit(e) {
     e.preventDefault();
-      fetch(`/api/donation/getMedicalConditions?symptomName=${this.state.symptoms}&gender=male&year_of_birth=1999`)
+      fetch(`/api/donation/getMedicalConditions?symptomName=${this.state.symptoms}&gender=${this.state.gender}&year_of_birth=${this.state.year_of_birth}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+      
         this.setState({diagnosis : data,
         isLoading: false,
         },
         
         );
-        this.props.history.push('/donate/result', this.state.diagnosis);
+        this.props.history.push('/donate/result', this.state.diagnosis
+        );
       })
       .catch(error => this.setState({error, isLoading: false}))
     
@@ -174,7 +175,7 @@ import {  getDiagnosis } from  '../../../actions/donationActions'
       ));
       return (
        
-        <div className="form-group">
+        <div className="form-group donatesym">
           <select
             className={classnames('form-control form__input', {
               'is-invalid': error

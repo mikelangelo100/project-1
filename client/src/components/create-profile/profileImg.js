@@ -47,7 +47,6 @@ class NewFileUpload extends Component {
   };
 
   render() {
-    const {  selectedFile } = this.state;
 
     return (
       <div>

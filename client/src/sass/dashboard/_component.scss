@@ -635,8 +635,11 @@
 
   ///PROFILE ///
   .main-profile-wrapper {
-      width: 100%;
-     display: flex;
+    display: flex;
+    flex: 1;
+    background-color: #E08686;
+    height: 100vh;
+
     //   flex-direction: row;
     //   justify-content: flex-start;
     //   align-items: flex-start;
@@ -704,13 +707,20 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      align-items: flex-end;
+      align-items: flex-start;
       position: fixed;
-      right: 200px;
+      right: 30px;
       top: 200px;
       text-align: center;
-       
+      font-size: 18px;
+      color: black
 
+  }
+  .donatesym {
+      padding: 20px;
+  }
+  .profile-link{
+      color: #000;
   }
   .profile-details-form {
       font-size: 20px;
@@ -802,7 +812,7 @@
 .main_result {
     background-color: #fff;
     border-radius: 20px;
-    width: 40%;
+    width: 60vw;
     height: 60vh;
     align-items: flex-end;
      
@@ -817,25 +827,28 @@
     margin-left: 100px;
     margin-top: 80px;
     height: 50vh;
-    width: 35%;
+    width: 70%;
 }
 .table_header {
     
     color: #000;
-    font-size: 24px;
+    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
+    
 }
 .entered_symptom {
-    padding-left: 150px;
+    padding-left: 70px;
     color: #B21111;
     font-style: italic;
+    
 }
 .result_items {
     color: #5A3840;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     padding: 20px;
+    overflow: hidden;
    
 
 }
@@ -891,10 +904,40 @@
     padding: 3px;
   
 }
+.profile-form {
+    display: grid;
+    justify-items: stretch;
+    height: 65vh;
+    width: 60vw;
+    background-color:#fff;
+    border-radius: 20px;
+    
+}
+.first-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 .table-data {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+.emailaddress {
+    
+    padding: 30px;
+    
+}
+.input-width {
+    width: 20vw;
+    height: 4vh;
+    border: 2px solid rgb(199, 136, 136);
+    border-radius: 20px;
+    
+}
+.email {
+    font-size: 18px;
+    padding: 10px;
 }
   @media (min-width: 1200px) {
     .container{

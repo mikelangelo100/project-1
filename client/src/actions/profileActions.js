@@ -7,8 +7,7 @@ import {
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
   SET_CURRENT_USER,
-  GET_PROFILE_IMAGE, 
-  SELECT_ACCOUNT
+  
 } from './types';
 
 // Get current profile

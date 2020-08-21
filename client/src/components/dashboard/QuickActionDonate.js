@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Rodal from 'rodal';
 import DonateImage from '../../img/donate-02.svg'
 

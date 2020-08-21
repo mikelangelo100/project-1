@@ -1,19 +1,14 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Select from '@material-ui/core/Select';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../common/Spinner'
 
 import { logoutUser } from '../../actions/authActions';
 import { QuickAction } from './QuickActions';
 
-import DonateBlood from './donateBlood/donate'
-import icons from '../../sass/img/icons.svg';
-import profilePicture from '../../sass/img/user.png';
-import ProfileActions from './ProfileActions';
-import Logo from '../../sass/img/logowhite.png';
+
 import DashboardBackground from '../../img/background.svg'
 
 import '../../css/dashboard/main.min.css';
@@ -34,8 +29,7 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
-    const year = new Date();
-    const { logoutUser } = this.props;
+    
     
 
     let dashboardContent;
@@ -87,9 +81,11 @@ class Dashboard extends Component {
     return (
     
       <div className="dashboard-container">
-       <Sidebar />
-       {dashboardContent}  
-          </div>
+        <Sidebar />
+        <div className="second-half">
+        {dashboardContent}  
+        </div>
+      </div>
         
       
      

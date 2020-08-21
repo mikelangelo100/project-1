@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router,
      Switch, Route,  
-     Link,   
+     
      } from 'react-router-dom';
 import Security from './Security'
 import UserProfile from './UserProfile'
@@ -10,7 +10,7 @@ import Settings from './Settings'
 
 class ProfileDetails extends Component {
     render() {
-        const { profile } = this.props;
+        
 
         return(
             <div className ="profile-wrapper">
@@ -18,7 +18,7 @@ class ProfileDetails extends Component {
                 <h1 className="profile-header">Profile</h1>  
                     
                     <div className="profile-details">
-                     <h2></h2>
+                  
                      <svg width="120" height="120" className="user-logo-svg">
                         <defs>
                             <pattern id="image" patternUnits="userSpaceOnUse" height="100" width="100">

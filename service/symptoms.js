@@ -19,7 +19,7 @@ const callSymptomAPI = (callback) => {
             if (err) { 
                 return callback(err);
             }
-            console.log(body); 
+             
             return callback(body);
             
         }); 
